@@ -9,6 +9,13 @@ import java.util.List;
 public class TableMetaData {
     private boolean tableOrView; // if is true -> TABLE, if is false -> VIEW
     private String name; // table or view name
+    private String prefix = "TBL_";
+    private List<ColumnMetaData> columns;
+
+    public TableMetaData(boolean tableOrView) {
+        this.tableOrView = tableOrView;
+        columns = new ArrayList<ColumnMetaData>();
+    }
 
     public String getName() {
         return name;
@@ -18,14 +25,12 @@ public class TableMetaData {
         this.name = name;
     }
 
-    List<ColumnMetaData> columns;
+    public String getClassName() {
+        return StringUtil.underscoreToCamelCase(prefix, false, name);
+    }
 
-    public void addColumnMetaData(ColumnMetaData columnMetaData){
+    public void addColumnMetaData(ColumnMetaData columnMetaData) {
         columns.add(columnMetaData);
     }
 
-    public TableMetaData(boolean tableOrView) {
-        this.tableOrView =tableOrView;
-        columns=new ArrayList<ColumnMetaData>();
-    }
 }

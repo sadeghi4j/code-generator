@@ -57,6 +57,7 @@ public class DBBean extends JdbcDaoSupport {
     // if tableOrView parameter is true function return table metadata,if is false return view metadata.
     public TableMetaData getTableMetaData(String tableName,boolean tableOrView) {
         TableMetaData retTableMetaData=new TableMetaData(tableOrView);
+        retTableMetaData.setName(tableName);
         StringBuilder query = new StringBuilder();
         query.append("select * from ").append(tableName);
             Connection connection = getConnection();
