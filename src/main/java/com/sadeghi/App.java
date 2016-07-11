@@ -18,7 +18,7 @@ public class App {
         DBBean dbBean = (DBBean)appContext.getBean("DBBean");
         dbBean.getTables(true,"SAMPLE");
         System.out.println("******************");
-        TableMetaData tableMetaData = dbBean.getTableMetaData("PERSON", false);
+        TableMetaData tableMetaData = dbBean.getTableMetaData("PERSON","SAMPLE", false);
         try {
             FreeMarkerEngine.fillTemplate("entity.ftl", tableMetaData);
         } catch (IOException e) {
