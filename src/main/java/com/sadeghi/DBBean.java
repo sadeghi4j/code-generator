@@ -38,7 +38,7 @@ public class DBBean extends JdbcDaoSupport {
 
             while (resultSet.next()) {
                 String name = resultSet.getString("TABLE_NAME");
-                System.out.println(name);
+//                System.out.println(name);
                 tableNames.add(name);
             }
             return tableNames;
@@ -75,6 +75,13 @@ public class DBBean extends JdbcDaoSupport {
         try {
             DatabaseMetaData databaseMetaData = connection.getMetaData();
             String catalog = databaseMetaData.getUserName();
+            ResultSet importedKeys = databaseMetaData.getExportedKeys(connection.getCatalog(), null, tableName);
+            System.out.println("****");
+            while (importedKeys.next())
+            {
+                System.out.println(importedKeys.getString(2));
+            }
+            System.out.println("****");
             columnsResultSet = databaseMetaData.getColumns(catalog, schemaPattern + "%", tableName + "%", "%");
             List<String> comments = new LinkedList<String>();
 
@@ -105,7 +112,7 @@ public class DBBean extends JdbcDaoSupport {
                 columnMetaData.setComment(comments.get(i - 1));
 
                 retTableMetaData.addColumnMetaData(columnMetaData);
-                System.out.println(columnMetaData);
+//                System.out.println(columnMetaData);
             }
         } catch (SQLException e) {
             e.printStackTrace();

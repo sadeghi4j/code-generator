@@ -17,21 +17,21 @@ public class App {
 
         DBBean dbBean = (DBBean)appContext.getBean("DBBean");
         dbBean.getTables(true,"SAMPLE");
-        System.out.println("******************");
+//        System.out.println("******************");
         TableMetaData tableMetaData = dbBean.getTableMetaData("PERSON","SAMPLE", false);
-        try {
+        /*try {
             FreeMarkerEngine.fillTemplate("entity.ftl", tableMetaData);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TemplateException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        String aliSadeghi = StringUtil.camelCaseToUnderscore("TBL_" , "aliSadeghi");
+        /*String aliSadeghi = StringUtil.camelCaseToUnderscore("TBL_" , "aliSadeghi");
         System.out.println(aliSadeghi);
 
         String underscoreToCamelCase = StringUtil.underscoreToCamelCase("TBL_",true, "TBL_ALI_SADEGHI");
-        System.out.println(underscoreToCamelCase);
+        System.out.println(underscoreToCamelCase);*/
     }
 
 
