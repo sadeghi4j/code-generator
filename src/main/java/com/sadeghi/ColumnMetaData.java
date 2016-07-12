@@ -11,6 +11,15 @@ public class ColumnMetaData {
     private boolean nullable;
     private int scale;
     private int precision;
+    private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public String getColumnLabel() {
         return columnLabel;
@@ -78,7 +87,6 @@ public class ColumnMetaData {
         this.precision = precision;
     }
 
-
     @Override
     public String toString() {
         return "ColumnMetaData{" +
@@ -89,8 +97,8 @@ public class ColumnMetaData {
                 ", nullable=" + nullable +
                 ", scale=" + scale +
                 ", precision=" + precision +
+                ", comment='" + comment + '\'' +
                 ", columnClassName='" + columnClassName + '\'' +
                 '}';
     }
-
 }
